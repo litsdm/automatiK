@@ -1,24 +1,22 @@
 {
-    "name": "",
-    "category": "",
+    "name": "automatiK",
+    "category": "Computer Vision",
     "example_input": {
-        "prompt": "Hello I am a [MASK] model."
+        "endpoint": "txt2img",
+        "params": {
+            "prompt": "an astronaut riding a (horse:motorcycle:0.5) on the moon",
+            "negative_prompt": "cartoonish, low quality",
+            "steps": 25,
+            "sampler_name": "Euler a",
+            "cfg_scale": 7.5,
+            "seed": 42,
+            "batch_size": 1,
+            "n_iter": 1,
+            "width": 768,
+            "height": 768,
+            "tiling": false
+        }
     },
-    "example_output": {
-        "outputs":[
-            {
-                "score":0.13177461922168732,
-                "token":4827,
-                "token_str":"fashion",
-                "sequence":"hello i am a fashion model."
-            },
-            {
-                "score":0.1120428815484047,
-                "token":2535,
-                "token_str":"role",
-                "sequence":"hello i am a role model."
-            }
-        ]
-    },
+    "example_output": {},
     "version": "1"
 }
