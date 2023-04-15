@@ -1,5 +1,12 @@
 FROM nvidia/cuda:11.7.1-runtime-ubuntu22.04
 
+# To use a different model, change the model URL below:
+ARG MODEL_URL='https://huggingface.co/stabilityai/stable-diffusion-2-1/blob/main/v2-1_768-ema-pruned.ckpt'
+
+# If you are using a private Huggingface model (sign in required to download) insert your Huggingface
+# access token (https://huggingface.co/settings/tokens) below:
+ARG HF_TOKEN=''
+
 RUN apt update && apt-get -y install git wget \
     python3.10 python3.10-venv python3-pip \
     build-essential libgl-dev libglib2.0-0 vim
@@ -10,6 +17,9 @@ WORKDIR /app
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 WORKDIR /app/stable-diffusion-webui
+
+ENV MODEL_URL=${MODEL_URL}
+ENV HF_TOKEN=${HF_TOKEN}
 
 ADD requirements.txt requirements.txt
 RUN pip install -r requirements.txt
